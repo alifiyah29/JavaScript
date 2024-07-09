@@ -1,16 +1,16 @@
 import React from "react";
-import { callbackify } from "util";
+
 
 type Props = {
     question: string;
     answers: string[];
     callback: any;
-    userAnswer: boolean;
+    userAnswer: any;
     questionNr: number;
     totalQuestions: number;
 }
 
-const questionCard: React.FC<Props> = ({
+const QuestionCard: React.FC<Props> = ({
     question,
     answers,
     callback,
@@ -23,14 +23,16 @@ const questionCard: React.FC<Props> = ({
         Question: {questionNr} / {totalQuestions}
         </p>
         <p dangerouslySetInnerHTML = {{__html: question}}/>
-        </div>
-        {answer.map(answer => (
+        <div>
+        {answers.map(answer => (
             <div>
                 <button disabled = {userAnswer} onClick={callback}>
                     <span dangerouslySetInnerHTML={{__html: answer}}/>
                 </button>
             </div>
         ))}
+        </div>
+        </div>
 )
 
-export default questionCard;
+export default QuestionCard;
